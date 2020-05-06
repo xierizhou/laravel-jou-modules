@@ -1,8 +1,17 @@
 laravel多模块测试版本
 
+如何安装？
+composer require jou/modules
+
 laravel版本 >= 6.0
 
+注册服务提供程序
 
+config/app.php 
+
+providers 添加：Jou\Modules\ModulesServiceProvider::class
+
+---------------------------------------
 创建模块
 
 php artisan module:make {模块名称}
