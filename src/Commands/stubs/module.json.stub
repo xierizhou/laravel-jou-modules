@@ -1,0 +1,20 @@
+{
+  "name": "$STUDLY_NAME$",
+  "alias": "$STUDLY_NAME$",
+  "description": "",
+  "keywords": [],
+  "composer": {
+      "require": {
+      },
+      "extra": {
+          "laravel": {
+              "providers": [
+                  "App\\Modules\\$STUDLY_NAME$\\Providers\\AppServiceProvider"
+              ],
+              "aliases": {
+
+              }
+          }
+      }
+  }
+}

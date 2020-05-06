@@ -1,0 +1,65 @@
+<?php
+
+
+namespace App\Modules\$MODULE_NAME$\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Symfony\Component\Finder\Finder;
+
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * module name
+     *
+     * @var string
+     */
+    private $moduleName = '$MODULE_NAME$';
+
+    /**
+     * Boot the application events.
+     *
+     * @return void
+     */
+    public function boot(){
+
+        $this->registerConfig();
+
+        $this->registerViews();
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->register(RouteServiceProvider::class);
+    }
+
+    /**
+     * Register Config
+     *
+     * @return void
+     */
+    public function registerConfig(){
+
+        foreach (Finder::create()->files()->name('*.php')->in(modules_path($this->moduleName,'Config')) as $file) {
+            $name = basename($file->getRealPath(), '.php');
+            $this->mergeConfigFrom(
+                $file->getRealPath(), strtolower($this->moduleName).'.'.$name
+            );
+        }
+
+    }
+
+    /**
+     * Register Views
+     *
+     * @return void
+     */
+    public function registerViews(){
+        $this->loadViewsFrom(modules_path($this->moduleName,'Resources/views'), strtolower($this->moduleName));
+    }
+}

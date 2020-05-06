@@ -1,0 +1,31 @@
+{
+    "name": "jou/modules",
+    "authors": [
+        {
+            "name": "jou",
+            "email": "932188443@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Jou\\Modules\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jou\\Modules\\ModulesServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+
+}
